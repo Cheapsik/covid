@@ -3,6 +3,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    text-align: center;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -10,4 +11,10 @@
     height: 30px;
     background-color: rgba(0,0,0,.5);
     color: gray;
+}
+
+@media (max-width: 500px) {
+    .footer{
+        font-size: 10px;
+    }
 }
