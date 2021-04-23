@@ -9,9 +9,18 @@ html{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body{
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .app{
-    border: 1px solid black;
+    width: 90vw;
+    
+}
+
+@media (max-width: 500px){
+    .app{
+        width: 100%;
+    }
 }
