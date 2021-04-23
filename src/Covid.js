@@ -1,31 +1,40 @@
-import React from 'react';
-import { Card, CountryPicker, Footer } from './components'
-import styles from './Covid.module.scss';
-import { fetchData } from './api';
-
+import React from "react";
+import { Card, CountryPicker, Footer } from "./components";
+import styles from "./Covid.module.scss";
+import { fetchData } from "./api";
 
 class Covid extends React.Component {
-  state = { 
-      data: {},
-   }
+  state = {
+    data: {},
+    country: '',
+  };
 
   async componentDidMount() {
-     const covidDate = await fetchData()
-    
-     this.setState({
-       data: covidDate,
-     })
-   }
+    const fetchedData = await fetchData();
+    this.setState({
+      data: fetchedData,
+    });
+  }
 
-  render() { 
-    return ( 
+  handleCountryChange = async (country) => {
+    const fetchedData = await fetchData(country)
+    this.setState({
+      data: fetchedData,
+      country,
+    })
+  }
+
+  render() {
+    const { data,country } = this.state;
+
+    return (
       <div className={styles.app}>
-        <CountryPicker />
-        <Card />
+        <CountryPicker handleCountryChange={this.handleCountryChange}/>
+        <Card data={data} country={country} handleCountryChange={this.handleCountryChange} />
         <Footer />
       </div>
-     );
+    );
   }
 }
- 
+
 export default Covid;
